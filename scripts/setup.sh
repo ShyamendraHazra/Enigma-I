@@ -15,3 +15,4 @@ TZ=Asia/Kolkata" > mysql.env;
 mkdir -pv logs/mysql
 mkdir -pv logs/php-apache
 mkdir -pv logs/phpmyadmin
+mkdir -pv mysql/DB-backup
