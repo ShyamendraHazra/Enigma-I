@@ -13,6 +13,7 @@ while true; do
         CONTAINER_NAME="mysql"
 
         if docker ps --format '{{.Names}}' | grep -q "^$CONTAINER_NAME$"; then
+            cat mysql/DB-backup/$(ls -t mysql/DB-backup | head -n 1) > $directory/$filename
             if docker cp "$directory/$filename" mysql:/db.sql; then
                 if docker exec -i mysql mysql -uroot -e "CREATE DATABASE IF NOT EXISTS \`$DATABASE\`;" &&
                 docker exec -i mysql mysql -uroot $DATABASE < "$directory/$filename"; then
