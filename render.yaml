@@ -4,19 +4,15 @@ services:
     name: enigma_one_server
     plan: free
     dockerfilePath: /Dockerfiles/server/Dockerfile
-    dockerContext: .
     buildCommand: docker build --target php_apache --build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") -t php-apache .
     envVars:
       - fromGroup: ENIGMA_ONE_PHP_ENV
-
-
 
   - type: web
     runtime: docker
     name: enigma_one_mysql
     plan: free
     dockerfilePath: Dockerfiles/mysql/Dockerfile
-    dockerContext: .
     buildCommand: docker build --target mysql --build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") -t mysql .
     envVars:
       - fromGroup: ENIGMA_ONE_MYSQL_ENV
