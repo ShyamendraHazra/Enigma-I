@@ -1,27 +1,27 @@
 services:
   - type: web
+    runtime: docker
     name: php-apache-server
-    env: docker
     plan: free
     dockerfilePath: Dockerfile
     dockerContext: .
     buildCommand: docker build --target php_apache --build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") -t php-apache .
-    startCommand: docker run --env-file php.env -v ./src:/var/www/html -v ./logs/php-apache:/var/log/apache2 -p 8000:80 php-apache
 
   - type: web
+    runtime: docker
     name: mysql
-    env: docker
     plan: free
     dockerfilePath: Dockerfile
     dockerContext: .
     buildCommand: docker build --target mysql --build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") -t mysql .
-    startCommand: docker run --env-file mysql.env -v ./mysql/data:/var/lib/mysql -v ./logs/mysql:/var/log/mysql --restart on-failure mysql
 
   - type: web
+    runtime: docker
     name: phpmyadmin
-    env: docker
     plan: free
     dockerfilePath: Dockerfile
     dockerContext: .
     buildCommand: docker build --target phpmyadmin -t phpmyadmin .
-    startCommand: docker run -v ./logs/phpmyadmin:/var/log/apache2 -p 8080:80 -e PMA_HOST=mysql phpmyadmin
+    envVars:
+      - key: PMA_HOST
+        value: mysql
