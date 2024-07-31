@@ -3,7 +3,7 @@ services:
     runtime: docker
     name: enigma_one_server
     plan: free
-    dockerfilePath: /Dockerfiles/server/.
+    dockerfilePath: /Dockerfiles/server/Dockerfile
     dockerContext: .
     buildCommand: docker build --target php_apache --build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") -t php-apache .
     envVars:
@@ -15,7 +15,7 @@ services:
     runtime: docker
     name: enigma_one_mysql
     plan: free
-    dockerfilePath: Dockerfiles/mysql/.
+    dockerfilePath: Dockerfiles/mysql/Dockerfile
     dockerContext: .
     buildCommand: docker build --target mysql --build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") -t mysql .
     envVars:
@@ -25,7 +25,7 @@ services:
     runtime: docker
     name: enigma_one_phpmyadmin
     plan: free
-    dockerfilePath: Dockerfiles/phpmyadmin/.
+    dockerfilePath: Dockerfiles/phpmyadmin/Dockerfile
     dockerContext: .
     buildCommand: docker build --target phpmyadmin -t phpmyadmin .
     envVars:
