@@ -1,4 +1,9 @@
-.env
+*.env
+docs/
+docs/*
 logs/
+logs/*
 *.sql
+mysql/
+mysql/*
 dev-roadmap.md
