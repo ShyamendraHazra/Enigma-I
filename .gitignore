@@ -3,8 +3,5 @@ docs/
 docs/*
 logs/
 logs/*
-*.sql
-mysql/
-mysql/*
 !/Dockerfiles/mysql/
 dev-roadmap.md
