@@ -1,7 +1,8 @@
 # Stage 1: Build the PHP Apache image
 FROM php:apache AS php_apache
 RUN docker-php-ext-install mysqli
-COPY ./src /var/www/html 
+COPY ./src /var/www/html
+RUN mkdir /var/www/html/phpmyadmin
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Stage 2: Build the MySQL image
@@ -14,6 +15,7 @@ COPY ./mysql/mysql.conf/my.cnf /etc/my.cnf
 FROM phpmyadmin AS phpmyadmin
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
+
 # Final stage: Combine the images
 FROM php_apache
 
@@ -21,7 +23,7 @@ FROM php_apache
 COPY --from=mysql /etc/my.cnf /etc/my.cnf
 
 # Copy the phpMyAdmin files from the phpmyadmin stage
-COPY --from=phpmyadmin /var/www/html /var/www/html
+COPY --from=phpmyadmin /var/www/html /var/www/html/phpmyadmin
 
 # Expose the necessary ports
 EXPOSE 80 3306
