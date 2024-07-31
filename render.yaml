@@ -1,7 +1,7 @@
 services:
   - type: web
     runtime: docker
-    name: php-apache-server
+    name: enigma_one_server
     plan: free
     dockerfilePath: /Dockerfiles/server/.
     dockerContext: .
@@ -23,7 +23,7 @@ services:
 
   - type: web
     runtime: docker
-    name: phpmyadmin
+    name: enigma_one_phpmyadmin
     plan: free
     dockerfilePath: Dockerfiles/phpmyadmin/.
     dockerContext: .
