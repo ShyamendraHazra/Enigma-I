@@ -4,28 +4,7 @@ services:
     name: enigma_one_server
     plan: free
     region: singapore
-    dockerfilePath: /Dockerfiles/server/Dockerfile
-    buildCommand: docker build --target php_apache --build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") -t php-apache .
+    dockerfilePath: Dockerfile
+    buildCommand: docker build --target php_apache --build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") -t php-enigma_one_server:latest .
     envVars:
-      - fromGroup: ENIGMA_ONE_PHP_ENV
-
-  - type: web
-    runtime: docker
-    name: enigma_one_mysql
-    plan: free
-    region: singapore
-    dockerfilePath: Dockerfiles/mysql/Dockerfile
-    buildCommand: docker build --target mysql --build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") -t mysql .
-    envVars:
-      - fromGroup: ENIGMA_ONE_MYSQL_ENV
-
-  - type: web
-    runtime: docker
-    name: enigma_one_phpmyadmin
-    plan: free
-    region: singapore
-    dockerfilePath: Dockerfiles/phpmyadmin/Dockerfile
-    dockerContext: .
-    buildCommand: docker build --target phpmyadmin -t phpmyadmin .
-    envVars:
-      - fromGroup: ENIGMA_ONE_PHP_ADMIN_ENV
+      - fromGroup: ENIGMA_ONE
