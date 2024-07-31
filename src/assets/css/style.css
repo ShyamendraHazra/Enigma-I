@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap');
 
+:root {
+    --black: #454545;
+    --gold: #FFC60B;
+    --bg: #FEFFDB;
+    --dark-gold: #FF8B00;
+}
 
 *{
     margin: 0;
@@ -8,31 +14,94 @@
 body
 {
     font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    width: 100vw;
 }
 
-h1{
-    text-align: center;
-    font-size: 44px;
+#header {
+    height: 10vh;
 }
 
-#main
-{
-    width: fit-content;
-    min-width: 300px;
-    margin: auto;
-    text-align: center;
+#main-container {
+
+    height: 80vh;
+    width:80vw;
+    border: 1px solid var(--black);
+    border-radius: 8px;
+    margin: auto auto;
+    overflow-y: scroll;
+    position: relative;
+    align-items: center;
+    display: flex; 
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+
+#main-container::-webkit-scrollbar {
+    width: 10px;
+    margin: 10px 0;
+    position: absolute;
+    top: 20px;
+}
+
+#main-container::-webkit-scrollbar-track {
+    margin: 40px 0;
+}
+
+#main-container::-webkit-scrollbar-thumb {
+    background-color: var(--gold);
     border-radius: 6px;
-    margin-top: 100px;
-    box-shadow: 2px 2px 6px #807d7d;
-    padding: 25px;
 }
- #main ul{
-    list-style: square;
-    text-align: left;
- }
 
-p{
-    max-width: 350px;
-    text-align: center;
-    font-weight: 300;
+
+.task-container {
+    width: 95%;
+    margin: 20px auto;
+    border-radius: 7px;
+    border: 2px solid #010101;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.left-icon {
+    height: 100%;
+    width: 5%;
+    margin: 0 25px;
+    display: flex;
+    align-items: center;
+}
+
+#clock-icon {
+    height: 90px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.task-heading-container {
+    width: 70%;
+    padding: 15px;
+    margin: 0 10px;
+}
+
+.action-state {
+    
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-button {
+    padding: 10px;
+    margin: 10px auto;
+    font-size: 22px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: var(--black);
+    color: var(--gold);
+    border: 2px solid var(--dark-gold);
+    border-radius: 5px;
 }

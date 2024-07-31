@@ -1,6 +1,6 @@
 <?php
 
-    $dbConnStatus=include('inc/config.php');
+    $dbConnStatus=include('api/server-config.php');
 ?>
 
 <!DOCTYPE html>
@@ -9,26 +9,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TASK SCHEDULAR | YOURCREATIVEDEV</title>
+    <title>Enigma</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/scripts.js"></script>
 </head>
 
 <body>
+    <div id="header">
 
-    <br /><br /><br /><br />
-    <h1>Hello DEVs!</h1>
-    <div id="main">
-        <h2>WELCOME TO PHP : <?php echo phpversion(); ?></h2>
-        <br /><br />
-        <h3>This is PHP : APACHE latest Docker Image</h3>
-        <ul>
-            <li>Font Style : Poppins</li>
-            <li>CSS Path : /assets/css/style.css</li>
-            <li>JS Path : /assets/js/scripts.js</li>
-            <li>Database : MySQL</li>
-            <li>Connection Status : <?php echo $dbConnStatus; ?></li>
-        </ul>
+    </div>
+    <div id="main-container">
+
+        <div class="task-container">
+        
+            <div class="left-icon">
+                <img id="clock-icon" src="assets/images/clock.svg" alt="icon">
+            </div>
+        
+            <div class="task-heading-container">
+        
+                <h2 id="task-heading-text">Task Heading</h2>
+        
+                <h2 id="task-points">Associated points</h2>
+        
+            </div>
+
+            <div class="action-state">
+                <button class="action-button">Complete</button>
+            </div>
+
+        </div>
+    
+        <div id="progress-container">
+
+            <div id="progress-bar"></div>
+
+
+            <div id="design-overlay"></div>
+
+        </div>
+
     </div>
 </body>
 
